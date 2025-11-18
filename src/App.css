@@ -1,40 +1,212 @@
 #root {
   max-width: 1280px;
+  width: 100%;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 2rem 1rem;
   text-align: center;
+  box-sizing: border-box;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+h2 {
+  color: #2c3e50;
+  font-weight: 600;
+  margin-bottom: 2rem !important;
+  font-size: 2rem;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h4 {
+  color: #34495e;
+  font-weight: 600;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+h5 {
+  color: #34495e;
+  font-weight: 600;
 }
 
 .card {
-  padding: 2em;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  background-color: #fff;
+  transition: box-shadow 300ms ease, transform 200ms ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.card.quiz-card {
+  height: auto;
+  max-height: 90vh;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card.quiz-selection {
+  padding: 1.5rem;
+  min-height: auto;
+  cursor: pointer;
+}
+
+.card.quiz-selection:hover {
+  transform: translateY(-2px);
+}
+
+.card.quiz-selection .card-body {
+  justify-content: space-between;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.card-title {
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.card-text {
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.list-group {
+  overflow-y: auto;
+}
+
+.list-group-item {
+  border: 1px solid #ecf0f1;
+  background-color: #fff;
+  transition: background-color 200ms ease, border-color 200ms ease;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+}
+
+.list-group-item:last-child {
+  margin-bottom: 0;
+}
+
+.list-group-item:hover {
+  outline: none;
+  border-color: #bdc3c7;
+  background-color: #f8f9fa;
+}
+
+.list-group-item:focus,
+.list-group-item:focus-visible {
+  outline: none;
+  border-color: #ecf0f1;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.alert-container {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  opacity: 1;
+  transition: opacity 200ms ease;
+}
+
+.alert {
+  width: 100%;
+  margin: 0;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: 500;
+}
+
+.btn {
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 200ms ease;
+  border: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 6px 12px rgba(102, 126, 234, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn-outline-danger {
+  color: #e74c3c;
+  border-color: #e74c3c;
+}
+
+.btn-outline-danger:hover {
+  background-color: #e74c3c;
+  border-color: #e74c3c;
+  color: white;
+}
+
+.btn-outline-secondary {
+  color: #95a5a6;
+  border-color: #95a5a6;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #95a5a6;
+  border-color: #95a5a6;
+  color: white;
+}
+
+.form-label {
+  color: #34495e;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.form-control {
+  border: 1px solid #ecf0f1;
+  border-radius: 6px;
+  padding: 0.75rem;
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+}
+
+.form-control:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  outline: none;
+}
+
+.progress {
+  border-radius: 4px;
+  background-color: #ecf0f1;
+  height: 8px;
+}
+
+.progress-bar {
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  border-radius: 4px;
+}
+
+.correct-anim {
+  animation: pop 400ms cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.02);
+  }
 }
 
 .read-the-docs {
