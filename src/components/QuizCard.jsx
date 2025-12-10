@@ -1,4 +1,7 @@
 export default function QuizCard({ quiz, onTakeQuiz, onDelete, showDelete = false }) {
+    const questionCount = quiz.questions.length
+    const questionText = questionCount === 1 ? 'question' : 'questions'
+
     return (
         <div className="card quiz-selection h-100" style={{ cursor: 'pointer', borderLeft: '4px solid #667eea' }}>
             <div className="card-body">
@@ -13,6 +16,7 @@ export default function QuizCard({ quiz, onTakeQuiz, onDelete, showDelete = fals
                                 e.stopPropagation()
                                 onDelete()
                             }}
+                            aria-label="Delete quiz"
                             title="Delete quiz"
                             style={{ padding: '0.35rem 0.75rem', fontSize: '0.85rem', fontWeight: 600 }}
                         >
@@ -24,11 +28,12 @@ export default function QuizCard({ quiz, onTakeQuiz, onDelete, showDelete = fals
                     {quiz.description}
                 </p>
                 <p style={{ color: '#666', fontSize: '0.9rem' }}>
-                    {quiz.questions.length} {quiz.questions.length === 1 ? 'question' : 'questions'}
+                    {questionCount} {questionText}
                 </p>
                 <button
                     className="btn btn-primary"
                     onClick={onTakeQuiz}
+                    aria-label={`Take ${quiz.title} quiz`}
                 >
                     Take Quiz
                 </button>

@@ -1,4 +1,4 @@
-export default function EmptyState({ title, description, buttonText, buttonHref }) {
+export default function EmptyState({ description, buttonText, buttonHref }) {
     return (
         <div className="card quiz-selection">
             <div className="card-body text-center">
