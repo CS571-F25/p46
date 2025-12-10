@@ -19,9 +19,9 @@ export default function QuizResults({ score, total, onRetry, onBack }) {
                 <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>
                     {percentage === 100 ? '🎉' : '✓'}
                 </div>
-                <h5 style={{ color: '#667eea', fontWeight: 600, marginBottom: '0.5rem' }}>
+                <h4 style={{ color: '#667eea', fontWeight: 600, marginBottom: '0.5rem' }}>
                     Your Score: {score}/{total}
-                </h5>
+                </h4>
                 <p style={{ color: '#555', marginBottom: '1.5rem' }}>
                     {percentage}% Correct
                 </p>
