@@ -20,7 +20,6 @@ export default function GenerateQuiz() {
         return parseInt(sessionStorage.getItem('draftExpandedQuestion') || '0')
     })
     const [error, setError] = useState('')
-    const [success, setSuccess] = useState('')
     const [showModal, setShowModal] = useState(false)
     const [modalTitle, setModalTitle] = useState('')
 
@@ -95,7 +94,6 @@ export default function GenerateQuiz() {
 
     const submitQuiz = () => {
         setError('')
-        setSuccess('')
 
         if (!validateQuiz()) {
             return

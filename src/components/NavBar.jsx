@@ -35,16 +35,16 @@ export default function NavBar() {
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav">
                         <li className="nav-item">
-                            <a className={"nav-link" + (active === 'home' ? ' active' : '')} href="#/">Home</a>
+                            <a className={`nav-link${active === 'home' ? ' active' : ''}`} href="#/">Home</a>
                         </li>
                         <li className="nav-item">
-                            <a className={"nav-link" + (active === 'generate' ? ' active' : '')} href="#/generate">Generate Quiz</a>
+                            <a className={`nav-link${active === 'generate' ? ' active' : ''}`} href="#/generate">Generate Quiz</a>
                         </li>
                         <li className="nav-item">
-                            <a className={"nav-link" + (active === 'pre-generated' ? ' active' : '')} href="#/pre-generated">Pre-generated Quizzes</a>
+                            <a className={`nav-link${active === 'pre-generated' ? ' active' : ''}`} href="#/pre-generated">Pre-generated Quizzes</a>
                         </li>
                         <li className="nav-item">
-                            <a className={"nav-link" + (active === 'custom' ? ' active' : '')} href="#/custom">Your Quizzes</a>
+                            <a className={`nav-link${active === 'custom' ? ' active' : ''}`} href="#/custom">Your Quizzes</a>
                         </li>
                     </ul>
                 </div>

@@ -12,10 +12,10 @@ function App() {
       <NavBar />
       <div className="container mt-4">
         <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/generate" element={<GenerateQuiz />}></Route>
-          <Route path="/pre-generated" element={<PreGeneratedQuizzes />}></Route>
-          <Route path="/custom" element={<CustomQuizzes />}></Route>
+          <Route path="/" element={<Home />} />
+          <Route path="/generate" element={<GenerateQuiz />} />
+          <Route path="/pre-generated" element={<PreGeneratedQuizzes />} />
+          <Route path="/custom" element={<CustomQuizzes />} />
         </Routes>
       </div>
     </HashRouter>

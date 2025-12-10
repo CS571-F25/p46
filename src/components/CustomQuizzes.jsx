@@ -57,10 +57,7 @@ export default function CustomQuizzes() {
                             <QuizCard
                                 quiz={quiz}
                                 showDelete={true}
-                                onTakeQuiz={() => {
-                                    sessionStorage.setItem('selectedQuizId', quiz.id)
-                                    setSelectedQuizId(quiz.id)
-                                }}
+                                onTakeQuiz={() => setSelectedQuizId(quiz.id)}
                                 onDelete={() => deleteQuiz(quiz.id)}
                             />
                         </div>
