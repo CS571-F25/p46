@@ -1,4 +1,8 @@
 import { useState, useEffect } from 'react'
+import ProgressBar from './ProgressBar'
+import ScoreDisplay from './ScoreDisplay'
+import ChoicesList from './ChoicesList'
+import QuizResults from './QuizResults'
 
 export default function QuizView({ quiz, onExit }) {
     const quizStorageKey = `quiz_${quiz.id}`
@@ -61,26 +65,19 @@ export default function QuizView({ quiz, onExit }) {
 
     const q = quiz.questions[current]
 
-    const percent = Math.round(((completed ? total : current) / total) * 100)
-
     return (
         <div className="card quiz-card">
             <div className="card-body" style={{ justifyContent: 'space-between' }}>
                 <div>
-                    <div className="d-flex justify-content-between align-items-center mb-1">
-                        <h4 className="card-title" style={{ marginBottom: 0, fontSize: '1.3rem' }}>{quiz.title}</h4>
-                        <div className="text-muted" style={{ fontSize: '0.9rem' }}>Score: {score}/{total}</div>
+                    <div className="d-flex justify-content-between align-items-center mb-3">
+                        <h3 className="card-title" style={{ marginBottom: 0, fontSize: '1.3rem' }}>{quiz.title}</h3>
                     </div>
 
-                    <div className="mb-2">
-                        <div className="progress" style={{ height: '8px' }}>
-                            <div className="progress-bar" role="progressbar" style={{ width: `${percent}%` }} aria-valuenow={percent} aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
+                    <ProgressBar current={completed ? total : current + 1} total={total} />
+                    <ScoreDisplay score={score} total={total} />
 
                     {!completed ? (
                         <div style={{ minHeight: 0 }}>
-                            <h5 className="mb-2" style={{ fontSize: '1rem' }}>Question {current + 1} of {total}</h5>
                             <p className="lead" style={{ marginBottom: '0.75rem', fontSize: '1rem' }}>{q.text}</p>
                             <div className="alert-container">
                                 {selected !== null && selected !== q.answerIndex && (
@@ -94,32 +91,26 @@ export default function QuizView({ quiz, onExit }) {
                                     </div>
                                 )}
                             </div>
-                            <div className="list-group">
-                                {q.choices.map((choice, i) => {
-                                    const isSelected = selected === i
-                                    const isCorrect = q.answerIndex === i
-                                    let className = 'list-group-item list-group-item-action'
-                                    return (
-                                        <button key={i} disabled={locked} onClick={() => choose(i)} className={className} style={{ textAlign: 'left' }}>
-                                            {choice}
-                                            {selected !== null && isCorrect && ' ✓'}
-                                            {selected !== null && isSelected && !isCorrect && ' ✗'}
-                                        </button>
-                                    )
-                                })}
-                            </div>
+                            <ChoicesList
+                                choices={q.choices}
+                                selected={selected}
+                                correct={q.answerIndex}
+                                locked={locked}
+                                completed={completed}
+                                onSelect={choose}
+                            />
                         </div>
                     ) : null}
                 </div>
 
-                {completed ? (
-                    <div className="text-center">
-                        <h3>Your score: {score} / {total}</h3>
-                        <p className="mb-3">{score === total ? 'Perfect! Great job.' : score >= total / 2 ? 'Nice work — you passed!' : 'Keep studying — you can do better next time.'}</p>
-                        <button className="btn btn-primary me-2" onClick={restart}>Retry</button>
-                        <button className="btn btn-outline-secondary" onClick={onExit}>Back to list</button>
-                    </div>
-                ) : null}
+                {completed && (
+                    <QuizResults
+                        score={score}
+                        total={total}
+                        onRetry={restart}
+                        onBack={onExit}
+                    />
+                )}
             </div>
         </div>
     )

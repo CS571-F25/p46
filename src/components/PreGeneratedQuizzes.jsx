@@ -207,15 +207,14 @@ const PREDEFINED_QUIZZES = [
 
 export default function PreGeneratedQuizzes() {
     const [selectedQuizId, setSelectedQuizId] = useState(() => {
-        const saved = sessionStorage.getItem('selectedQuizId')
-        return saved || null
+        return sessionStorage.getItem('activePredefinedQuizId') || null
     })
 
     useEffect(() => {
         if (selectedQuizId) {
-            sessionStorage.setItem('selectedQuizId', selectedQuizId)
+            sessionStorage.setItem('activePredefinedQuizId', selectedQuizId)
         } else {
-            sessionStorage.removeItem('selectedQuizId')
+            sessionStorage.removeItem('activePredefinedQuizId')
         }
     }, [selectedQuizId])
 
@@ -228,25 +227,28 @@ export default function PreGeneratedQuizzes() {
             {!selectedQuiz && (
                 <div className="card quiz-selection mb-4">
                     <div className="card-body">
-                        <h5 className="card-title">Select a quiz</h5>
+                        <h3 className="card-title">Select a quiz</h3>
                         <p className="card-text">Choose one of the pre-generated quizzes below to begin. Each quiz provides instant feedback and shows your score at the end.</p>
                     </div>
                 </div>
             )}
 
             {!selectedQuiz ? (
-                <div className="row">
-                    {PREDEFINED_QUIZZES.map(quiz => (
-                        <div className="col-md-4 mb-3" key={quiz.id}>
-                            <div className="card quiz-selection h-100" style={{ cursor: 'pointer' }}>
-                                <div className="card-body">
-                                    <h5 className="card-title">{quiz.title}</h5>
-                                    <p className="card-text">{quiz.description}</p>
-                                    <button className="btn btn-primary" onClick={() => setSelectedQuizId(quiz.id)}>Take Quiz</button>
+                <div>
+                    <h3 style={{ color: '#2c3e50', fontWeight: 600, marginBottom: '1rem' }}>Available Quizzes</h3>
+                    <div className="row mb-4">
+                        {PREDEFINED_QUIZZES.map(quiz => (
+                            <div className="col-md-4 mb-3" key={quiz.id}>
+                                <div className="card quiz-selection h-100" style={{ cursor: 'pointer' }}>
+                                    <div className="card-body">
+                                        <h5 className="card-title">{quiz.title}</h5>
+                                        <p className="card-text">{quiz.description}</p>
+                                        <button className="btn btn-primary" onClick={() => setSelectedQuizId(quiz.id)}>Take Quiz</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
             ) : (
                 <div>

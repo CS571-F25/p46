@@ -6,6 +6,7 @@ function getActiveFromHash() {
     if (path === '' || path === '/') return 'home'
     if (path.startsWith('generate')) return 'generate'
     if (path.startsWith('pre-generated')) return 'pre-generated'
+    if (path.startsWith('custom')) return 'custom'
     return 'home'
 }
 
@@ -41,6 +42,9 @@ export default function NavBar() {
                         </li>
                         <li className="nav-item">
                             <a className={"nav-link" + (active === 'pre-generated' ? ' active' : '')} href="#/pre-generated">Pre-generated Quizzes</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className={"nav-link" + (active === 'custom' ? ' active' : '')} href="#/custom">Your Quizzes</a>
                         </li>
                     </ul>
                 </div>

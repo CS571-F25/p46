@@ -4,6 +4,7 @@ import Home from './components/Home'
 import NavBar from './components/NavBar'
 import GenerateQuiz from './components/GenerateQuiz'
 import PreGeneratedQuizzes from './components/PreGeneratedQuizzes'
+import CustomQuizzes from './components/CustomQuizzes'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<Home />}></Route>
           <Route path="/generate" element={<GenerateQuiz />}></Route>
           <Route path="/pre-generated" element={<PreGeneratedQuizzes />}></Route>
+          <Route path="/custom" element={<CustomQuizzes />}></Route>
         </Routes>
       </div>
     </HashRouter>
